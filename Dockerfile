@@ -1,11 +1,11 @@
-FROM ubuntu:20.04
+FROM ubuntu:22.04
 
 # Set correct environment variables
 ENV DEBIAN_FRONTEND="noninteractive" HOME="/root" LC_ALL="C.UTF-8" LANG="en_US.UTF-8" LANGUAGE="en_US.UTF-8"
 ENV supervisor_conf /etc/supervisor/supervisord.conf
 ENV security_conf /etc/apache2/conf-available/security.conf
 ENV start_scripts_path /bin
-ENV WT_VERSION="2.0.24"
+ENV WT_VERSION="2.0.26"
 
 # Update packages from baseimage
 RUN apt-get update -qq
@@ -92,7 +92,7 @@ RUN chown -R www-data:www-data /var/www/html \
     && chmod -R 770 /var/www/html
        
 #Add Apache configuration
-ADD php.ini /etc/php/7.4/apache2/
+ADD php.ini /etc/php/8.1/apache2/
 ADD webtrees.conf /etc/apache2/sites-available/
 ADD webtrees_insecure.conf /etc/apache2/sites-available/
 
